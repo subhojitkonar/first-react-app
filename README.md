@@ -47,10 +47,35 @@ Coverage output includes text summary and `lcov` (for CI or services like Codeco
 - Vitest + Testing Library
 - ESLint (TS + Hooks + React Refresh rule)
 
+## Calculator Feature
+
+An accessible calculator component showcasing:
+
+- Expression parsing with operator precedence (no `eval`).
+- Keyboard support: digits, + - * /, Enter/`=`, Esc (clear), Backspace (delete), `r` (memory recall), `p` (percent), `n` (toggle sign).
+- Repeat equals: pressing `=` again repeats the last operation.
+- Memory keys: MC, MR, M+, M- (indicator `M` appears when memory non‑zero).
+- Additional keys: `%` (percent), `+/-` (toggle sign).
+- Auto-resizing display font for long numbers.
+- Dark mode aware styling.
+
+### Dark Mode Toggle
+
+Implemented via a button that:
+- Persists preference (`pref-theme`) in `localStorage`.
+- Falls back to system `prefers-color-scheme`.
+- Toggles a `dark` class on `<body>` (no Tailwind dependency).
+
+### Extending
+
+- Add additional functions (%, +/-) by enhancing `useCalculator` and inserting keys.
+- Add history: store past expressions/results in an array and render a scrollable list.
+- Internationalization: wrap button labels with an i18n solution (e.g., `react-intl`).
+
 ## Adjustments
 
 - Update `engines.node` in `package.json` if you need a different Node version.
-- Add Prettier, TailwindCSS, or CI workflows later if desired.
+- Add Prettier or CI workflows later if desired. (Tailwind/PostCSS removed; reintroduce if utility classes are needed.)
 - Add path aliases by updating `tsconfig.json` and `vite.config.ts`.
 
 ## License
