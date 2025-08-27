@@ -27,12 +27,16 @@ export const Calculator: React.FC = () => {
     [ '0', '.', '=', '+' ],
   ];
 
+  type Operator = '+' | '-' | '*' | '/';
   const keys = keypadRows.flatMap(row => row.map(symbol => {
     if (/^[0-9]$/.test(symbol)) return { label: symbol, action: () => inputDigit(symbol) };
     if (symbol === '.') return { label: '.', action: inputDecimal };
     if (symbol === '=') return { label: '=', action: evaluate, variant: 'primary' as const };
     // operators
-    return { label: symbol, action: () => inputOperator(symbol as any), variant: 'operator' as const };
+    if (['+', '-', '*', '/'].includes(symbol)) {
+      return { label: symbol, action: () => inputOperator(symbol as Operator), variant: 'operator' as const };
+    }
+    return { label: symbol, action: () => {}, variant: 'operator' as const }; // fallback, should not occur
   }));
 
   return (
