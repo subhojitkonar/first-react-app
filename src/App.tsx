@@ -75,8 +75,9 @@ export default function App() {
     apply(mode);
     localStorage.setItem('pref-theme', mode);
     if (mode === 'system') {
-      mq.addEventListener('change', () => apply('system'));
-      return () => mq.removeEventListener('change', () => apply('system'));
+      const onChange = () => apply('system');
+      mq.addEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
     }
   }, [mode]);
 
