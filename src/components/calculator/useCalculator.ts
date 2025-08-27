@@ -179,9 +179,9 @@ export function useCalculator() {
     if (key === 'Enter' || key === '=') return evaluate();
     if (key === 'Escape' || key === 'c' || key === 'C') return clear();
     if (key === 'Backspace') return del();
-  if (key === 'r' || key === 'R') return memoryRecall();
-  if (key === 'p' || key === 'P') return percent();
-  if (key === 'n' || key === 'N') return toggleSign();
+    if (key === 'r' || key === 'R') return memoryRecall();
+    if (key === 'p' || key === 'P') return percent();
+    if (key === 'n' || key === 'N') return toggleSign();
   }, [inputDigit, inputDecimal, inputOperator, evaluate, clear, del, memoryRecall, percent, toggleSign]);
 
   return {
