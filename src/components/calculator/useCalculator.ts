@@ -193,11 +193,11 @@ export function useCalculator() {
     clear,
     del,
     handleKey,
-  memoryAdd,
-  memorySubtract,
-  memoryRecall,
-  memoryClear,
-  toggleSign,
-  percent,
+    memoryAdd,
+    memorySubtract,
+    memoryRecall,
+    memoryClear,
+    toggleSign,
+    percent,
   };
 }
