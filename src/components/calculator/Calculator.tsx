@@ -36,28 +36,29 @@ export const Calculator: React.FC = () => {
   }));
 
   return (
-    <div ref={containerRef} tabIndex={0} className="card" aria-label="Calculator">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div ref={containerRef} tabIndex={0} className="card p-4 shadow-sm calculator-card" aria-label="Calculator">
+      <div className="d-flex justify-content-between align-items-center gap-2 mb-2">
         <Display expression={state.expression} value={state.current} />
-        {state.memory ? <span style={{ marginLeft: '0.5rem', fontSize: '0.7rem', color: 'var(--accent)', fontWeight: 600 }}>M</span> : null}
+        {state.memory ? <span className="badge text-bg-primary align-self-start ms-1" style={{ fontSize: '0.6rem' }}>M</span> : null}
       </div>
-      <div className="memory-row" style={{ fontSize: '.65rem', fontWeight: 600 }}>
-        <button onClick={memoryClear} className="btn-key" aria-label="Memory Clear">MC</button>
-        <button onClick={memoryRecall} className="btn-key" aria-label="Memory Recall">MR</button>
-        <button onClick={memoryAdd} className="btn-key" aria-label="Memory Add">M+</button>
-        <button onClick={memorySubtract} className="btn-key" aria-label="Memory Subtract">M-</button>
+      <div className="d-grid" style={{ gridTemplateColumns: 'repeat(4,1fr)', gap: '.5rem', fontSize: '.65rem', fontWeight: 600 }}>
+        <button onClick={memoryClear} className="btn btn-secondary" aria-label="Memory Clear">MC</button>
+        <button onClick={memoryRecall} className="btn btn-secondary" aria-label="Memory Recall">MR</button>
+        <button onClick={memoryAdd} className="btn btn-secondary" aria-label="Memory Add">M+</button>
+        <button onClick={memorySubtract} className="btn btn-secondary" aria-label="Memory Subtract">M-</button>
       </div>
-      <div className="control-row">
-        <button type="button" aria-label="Clear" onClick={clear} className="btn-key btn-danger">C</button>
-        <button type="button" aria-label="Delete" onClick={del} className="btn-key btn-danger">DEL</button>
-        <button type="button" aria-label="Percent" onClick={percent} className="btn-key">%</button>
-        <button type="button" aria-label="Toggle Sign" onClick={toggleSign} className="btn-key">+/-</button>
+      <div className="d-grid mt-2" style={{ gridTemplateColumns: 'repeat(4,1fr)', gap: '.5rem' }}>
+        <button type="button" aria-label="Clear" onClick={clear} className="btn btn-danger fw-semibold">C</button>
+        <button type="button" aria-label="Delete" onClick={del} className="btn btn-danger fw-semibold">DEL</button>
+        <button type="button" aria-label="Percent" onClick={percent} className="btn btn-light fw-semibold">%</button>
+        <button type="button" aria-label="Toggle Sign" onClick={toggleSign} className="btn btn-light fw-semibold">+/-</button>
       </div>
-      <Keypad
-        keys={keys}
-        className="keypad"
-      />
-      <p className="footer-hint">Keys: digits · + - * / · Enter(=) · Esc(clear) · Backspace(delete)</p>
+      <div className="d-grid mt-3" style={{ gridTemplateColumns: 'repeat(4,1fr)', gap: '.5rem' }}>
+        <Keypad keys={keys} />
+      </div>
+      <p className="text-center text-muted small mt-2 mb-0">
+        Keys: digits · + - * / · Enter(=) · Esc / C (clear) · Backspace (delete) · R (memory recall) · P (percent) · N (toggle sign)
+      </p>
     </div>
   );
 };

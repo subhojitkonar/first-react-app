@@ -182,7 +182,7 @@ export function useCalculator() {
   if (key === 'r' || key === 'R') return memoryRecall();
   if (key === 'p' || key === 'P') return percent();
   if (key === 'n' || key === 'N') return toggleSign();
-  }, [inputDigit, inputDecimal, inputOperator, evaluate, clear, del]);
+  }, [inputDigit, inputDecimal, inputOperator, evaluate, clear, del, memoryRecall, percent, toggleSign]);
 
   return {
     state,

@@ -7,16 +7,15 @@ interface DisplayProps {
 
 export const Display: React.FC<DisplayProps> = ({ expression, value }) => {
   const length = value.length;
-  // Determine size scale thresholds
-  let sizeClass = 'text-2xl';
-  if (length > 12) sizeClass = 'text-xl';
-  if (length > 18) sizeClass = 'text-lg';
-  if (length > 24) sizeClass = 'text-base';
-  const sizeMap: Record<string,string> = { 'text-2xl':'1.75rem','text-xl':'1.4rem','text-lg':'1.15rem','text-base':'1rem'};
+  // Determine font size directly (removed Tailwind-esque class indirection)
+  const fontSize = length > 24 ? '1rem'
+    : length > 18 ? '1.15rem'
+      : length > 12 ? '1.4rem'
+        : '1.75rem';
   return (
-  <div className="calc-display" aria-live="polite" style={{ flex: 1 }}>
-      <div className="calc-display-expression" data-testid="expression">{expression || '\u00A0'}</div>
-      <div className="calc-display-value" data-testid="value" style={{ fontSize: sizeMap[sizeClass] }}>{value}</div>
+    <div className="border rounded bg-white dark-bg-dark-subtle p-3 d-flex flex-column justify-content-between text-end" aria-live="polite" style={{ flex: 1, minHeight: '4.25rem' }}>
+      <div className="small text-muted" data-testid="expression" style={{ wordBreak: 'break-all' }}>{expression || '\u00A0'}</div>
+      <div className="fw-semibold" data-testid="value" style={{ fontSize, lineHeight: 1.1, wordBreak: 'break-all' }}>{value}</div>
     </div>
   );
 };

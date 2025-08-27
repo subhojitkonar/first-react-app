@@ -81,12 +81,12 @@ export default function App() {
   }, [mode]);
 
   return (
-    <div className="app-container">
-      <div className="header-bar">
-        <h1>Calculator</h1>
-        <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}>
+    <div className="container py-4">
+      <div className="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+        <h1 className="h3 m-0">Calculator</h1>
+        <div className="d-flex gap-2 align-items-center">
           <ThemeToggle mode={mode} setMode={setMode} />
-          <button type="button" className="btn-key btn-operator" style={{ fontSize: '.7rem', padding: '.45rem .7rem' }} onClick={openCalculatorPiP} title="Open Picture-in-Picture calculator">PiP</button>
+          <button type="button" className="btn btn-outline-primary btn-sm" onClick={openCalculatorPiP} title="Open Picture-in-Picture calculator">PiP</button>
         </div>
       </div>
       <Calculator />

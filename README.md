@@ -52,7 +52,7 @@ Coverage output includes text summary and `lcov` (for CI or services like Codeco
 An accessible calculator component showcasing:
 
 - Expression parsing with operator precedence (no `eval`).
-- Keyboard support: digits, + - * /, Enter/`=`, Esc (clear), Backspace (delete), `r` for memory recall.
+- Keyboard support: digits, + - * /, Enter/`=`, Esc (clear), Backspace (delete), `r` (memory recall), `p` (percent), `n` (toggle sign).
 - Repeat equals: pressing `=` again repeats the last operation.
 - Memory keys: MC, MR, M+, M- (indicator `M` appears when memory non‑zero).
 - Additional keys: `%` (percent), `+/-` (toggle sign).
@@ -64,7 +64,7 @@ An accessible calculator component showcasing:
 Implemented via a button that:
 - Persists preference (`pref-theme`) in `localStorage`.
 - Falls back to system `prefers-color-scheme`.
-- Applies Tailwind `dark` class to `<html>` root.
+- Toggles a `dark` class on `<body>` (no Tailwind dependency).
 
 ### Extending
 
@@ -75,7 +75,7 @@ Implemented via a button that:
 ## Adjustments
 
 - Update `engines.node` in `package.json` if you need a different Node version.
-- Add Prettier, TailwindCSS, or CI workflows later if desired.
+- Add Prettier or CI workflows later if desired. (Tailwind/PostCSS removed; reintroduce if utility classes are needed.)
 - Add path aliases by updating `tsconfig.json` and `vite.config.ts`.
 
 ## License
